@@ -31,8 +31,12 @@
             <url>http://repo.bukkit.org/content/groups/public</url>
         </repository>
         <repository>
-            <id>addstar-repo</id>
+            <id>addstar-snapshot-repo</id>
             <url>http://maven.addstar.com.au/artifactory/ext-snapshot-local</url>
+        </repository>
+        <repository>
+            <id>addstar-repo</id>
+            <url>http://maven.addstar.com.au/artifactory/ext-release-local</url>
         </repository>
         <repository>
             <id>sk89q-maven</id>
@@ -49,11 +53,6 @@
         <repository>
             <id>dynmap-repo</id>
             <url>http://repo.mikeprimm.com</url>
-        </repository>
-        <repository>
-            <id>hawkfalcon-repo</id>
-            <name>Hawkfalcon Repository</name>
-            <url>http://ci.hawkfalcon.com/plugin/repository/everything</url>
         </repository>
         <repository>
             <id>citizens-repo</id>
