@@ -24,8 +24,6 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.dynmap.DynmapAPI;
-import org.mcstats.Metrics;
-import org.mcstats.Metrics.Plotter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -146,8 +144,6 @@ public class ChessCraft extends JavaPlugin implements ConfigurationListener, Plu
         tickTask = new ChessTickTask();
         tickTask.runTaskTimer(this, 20L, 20L);
 
-		setupMetrics();
-
 		Debugger.getInstance().debug("Version " + getDescription().getVersion() + " enable complete");
 	}
 
@@ -188,27 +184,6 @@ public class ChessCraft extends JavaPlugin implements ConfigurationListener, Plu
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
 		return cmds.onTabComplete(sender, command, label, args);
-	}
-
-	private void setupMetrics() {
-		if (!getConfig().getBoolean("mcstats")) {
-			return;
-		}
-		try {
-			Metrics metrics = new Metrics(this);
-
-			metrics.createGraph("Boards Created").addPlotter(new Plotter() {
-				@Override
-				public int getValue() { return BoardViewManager.getManager().listBoardViews().size();	}
-			});
-			metrics.createGraph("Games in Progress").addPlotter(new Plotter() {
-				@Override
-				public int getValue() { return ChessGameManager.getManager().listGames().size(); }
-			});
-			metrics.start();
-		} catch (IOException e) {
-			LogUtils.warning("Can't submit metrics data: " + e.getMessage());
-		}
 	}
 
 	private void setupVault(PluginManager pm) {
