@@ -1,5 +1,6 @@
 package me.desht.chesscraft.util;
 
+import com.sk89q.worldedit.util.io.file.FilenameException;
 import me.desht.chesscraft.ChessCraft;
 import me.desht.chesscraft.DirectoryStructure;
 import me.desht.chesscraft.chess.BoardView;
@@ -19,7 +20,11 @@ public class TerrainBackup {
 			Cuboid c = view.getOuterBounds();
 			Location l1 = c.getLowerNE();
 			Location l2 = c.getUpperSW();
-			tm.saveTerrain(new File(DirectoryStructure.getSchematicsDirectory(), view.getName()), l1, l2);
+
+			File schematicFile = new File(DirectoryStructure.getSchematicsDirectory(),view.getName());
+			try{tm.saveTerrain(schematicFile, l1, l2);}catch (FilenameException e){
+				e.getMessage();
+			}
 			saved = true;
 		} catch (Exception e) {
 			LogUtils.warning(e.getMessage());

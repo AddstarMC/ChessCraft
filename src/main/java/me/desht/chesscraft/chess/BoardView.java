@@ -788,6 +788,12 @@ public class BoardView implements PositionListener, PositionChangeListener, Game
 
     @Override
     public void promotionPieceChanged(ChessPlayer chessPlayer, int promotionPiece) {
-        getControlPanel().getSignButton(chessPlayer.getColour() == Chess.WHITE ? PromoteWhiteButton.class : PromoteBlackButton.class).repaint();
+		Class type;
+		if(chessPlayer.getColour() == Chess.WHITE){
+		type = PromoteWhiteButton.class;}
+		else{
+			type = PromoteBlackButton.class;
+		}
+        getControlPanel().getSignButton(type).repaint();
     }
 }
