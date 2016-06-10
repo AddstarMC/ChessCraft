@@ -29,10 +29,6 @@
 
     <repositories>
         <repository>
-            <id>bukkit-repo</id>
-            <url>http://repo.bukkit.org/content/groups/public</url>
-        </repository>
-        <repository>
             <id>addstar-snapshot-repo</id>
             <url>http://maven.addstar.com.au/artifactory/ext-snapshot-local</url>
             <snapshots>
@@ -76,20 +72,6 @@
         <finalName>${project.name}</finalName>
         <plugins>
             <plugin>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>2.9</version>
-                <configuration>
-                    <additionalProjectnatures>
-                        <projectnature>org.eclipse.m2e.core.maven2Nature</projectnature>
-                    </additionalProjectnatures>
-                    <buildcommands>
-                        <buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
-                        <buildcommand>org.eclipse.m2e.core.maven2Builder</buildcommand>
-                    </buildcommands>
-                    <useProjectReferences>false</useProjectReferences>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
@@ -105,7 +87,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>1.6</version>
+                <version>2.4.3</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -152,9 +134,13 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.9</version>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
             </plugin>
+
         </plugins>
         <resources>
             <resource>
@@ -200,12 +186,26 @@
             <artifactId>scrollingmenusign</artifactId>
             <version>2.4.0-SNAPSHOT</version>
             <scope>provided</scope>
+            <!-- No Idea why this exclusion helps a build -->
+            <exclusions>
+                <exclusion>
+                    <groupId>me.desht</groupId>
+                    <artifactId>dhutils-lib</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>me.desht</groupId>
             <artifactId>landslide</artifactId>
             <version>1.5.0-SNAPSHOT</version>
             <scope>provided</scope>
+            <!-- No Idea why this exclusion helps a build -->
+            <exclusions>
+                <exclusion>
+                    <groupId>me.desht</groupId>
+                    <artifactId>dhutils-lib</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.sk89q.worldedit</groupId>
@@ -216,7 +216,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.10</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
         <dependency>
