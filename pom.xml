@@ -181,7 +181,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.10-R0.1-SNAPSHOT</version>
+            <version>1.11-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -231,7 +231,7 @@
         <dependency>
             <groupId>me.desht</groupId>
             <artifactId>dhutils-lib</artifactId>
-            <version>2.19.2-SNAPSHOT</version>
+            <version>2.19.3-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>me.desht</groupId>
