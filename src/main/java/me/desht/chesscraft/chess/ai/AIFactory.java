@@ -17,6 +17,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
 import java.util.*;
 import java.util.Map.Entry;
@@ -175,7 +176,8 @@ public class AIFactory {
 		try {
 			JARUtil ju = new JARUtil(ChessCraft.getInstance());
 			InputStream in = ju.openResourceNoCache(AI_CORE_DEFS);
-			coreAIdefs = YamlConfiguration.loadConfiguration(in);
+			InputStreamReader reader = new InputStreamReader(in);
+			coreAIdefs = YamlConfiguration.loadConfiguration(reader);
 		} catch (Exception e) {
 			LogUtils.severe("Can't load AI definitions: " + e.getMessage());
 			return;
