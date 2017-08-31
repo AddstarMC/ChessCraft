@@ -367,7 +367,7 @@ public class BoardViewManager {
 		for (BoardView bv : listBoardViews()) {
 			Cuboid c = bv.getOuterBounds();
 			MaterialData mat = bv.getChessBoard().getBoardStyle().getEnclosureMaterial();
-			if (BlockType.canPassThrough(mat.getItemTypeId())) {
+			if (mat.getItemType().isTransparent() || BlockType.canPassThrough(mat.getItemTypeId())) {
 				c = c.expand(CuboidDirection.Up, Math.max(5, (c.getSizeY() * above) / 100));
 				c = c.outset(CuboidDirection.Horizontal, Math.max(5, (c.getSizeX() * outside) / 100));
 			}

@@ -45,10 +45,10 @@ public class ChessPlayerListener extends ChessListenerBase {
 	}
 
 	// block ids to be considered transparent when calling player.getTargetBlock()
-	private static final HashSet<Byte> transparent = new HashSet<Byte>();
+	private static final HashSet<Material> transparent = new HashSet<Material>();
 	static {
-		transparent.add((byte) 0); // air
-		transparent.add((byte) 20); // glass
+		transparent.add(Material.AIR); // air
+		transparent.add(Material.GLASS); // glass
 	}
 
 	private static final long MIN_ANIMATION_WAIT = 200; // milliseconds
@@ -138,7 +138,7 @@ public class ChessPlayerListener extends ChessListenerBase {
 
 		try {
 			if (event.getAnimationType() == PlayerAnimationType.ARM_SWING) {
-				if (holdingRightItem(player.getItemInHand())) {
+				if (holdingRightItem(player.getInventory().getItemInMainHand())) {
 					targetBlock = player.getTargetBlock(transparent, 120);
 					Debugger.getInstance().debug(2, "Player " + player.getName() + " waved at block " + targetBlock);
 					Location loc = targetBlock.getLocation();
