@@ -30,8 +30,8 @@ public class ChessPersistence {
 	}
 
 	public void reload() {
-		List<BoardView> views = new ArrayList<BoardView>(BoardViewManager.getManager().listBoardViews());
-		for (BoardView view : views) {
+        List<BoardView> views = new ArrayList<>(BoardViewManager.getManager().listBoardViews());
+        for (BoardView view : views) {
 			// this will also do a temporary delete on any games
 			BoardViewManager.getManager().deleteBoardView(view.getName(), false);
 		}
@@ -41,8 +41,8 @@ public class ChessPersistence {
 	}
 
 	public static List<Object> freezeLocation(Location l) {
-		List<Object> list = new ArrayList<Object>();
-		list.add(l.getWorld().getName());
+        List<Object> list = new ArrayList<>();
+        list.add(l.getWorld().getName());
 		list.add(l.getBlockX());
 		list.add(l.getBlockY());
 		list.add(l.getBlockZ());

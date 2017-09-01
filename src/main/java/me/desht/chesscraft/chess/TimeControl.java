@@ -21,8 +21,8 @@ public class TimeControl implements ConfigurationSerializable {
 	private long elapsed;				// milliseconds
 	private int rolloverPhase;
 	private int rolloverMovesMade;
-	private final List<RolloverPhase> rollovers = new ArrayList<TimeControl.RolloverPhase>();
-	private long lastChecked = System.currentTimeMillis();
+    private final List<RolloverPhase> rollovers = new ArrayList<>();
+    private long lastChecked = System.currentTimeMillis();
 	private boolean active = false;
 	private boolean newPhase;
 
@@ -68,8 +68,8 @@ public class TimeControl implements ConfigurationSerializable {
 
 	@Override
 	public Map<String, Object> serialize() {
-		Map<String, Object> res = new HashMap<String, Object>();
-		res.put("spec", spec);
+        Map<String, Object> res = new HashMap<>();
+        res.put("spec", spec);
 		res.put("elapsed", elapsed);
 		res.put("remainingTime", remainingTime);
 		res.put("rolloverPhase", rolloverPhase);
@@ -140,8 +140,8 @@ public class TimeControl implements ConfigurationSerializable {
 		case GAME_IN:
 			return "Game in " + (totalTime / 60000) + "m";
 		case ROLLOVER:
-			List<String> l = new ArrayList<String>();
-			for (int i = 0; i < rollovers.size(); i++) {
+            List<String> l = new ArrayList<>();
+            for (int i = 0; i < rollovers.size(); i++) {
 				if (i == rolloverPhase) {
 					l.add("[ " + rollovers.get(i).toString() + " ]");
 				} else {

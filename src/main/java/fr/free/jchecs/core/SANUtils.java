@@ -139,7 +139,7 @@ public final class SANUtils
     }
 
     final boolean prise = pSAN.indexOf('x') >= 0;
-    final List<Move> mvts = new ArrayList<Move>(Arrays.asList(pEtat.getValidMoves(trait)));
+      final List<Move> mvts = new ArrayList<>(Arrays.asList(pEtat.getValidMoves(trait)));
     for (int i = mvts.size() - 1; i >= 0; i--)
     {
       final Move m = mvts.get(i);
@@ -258,7 +258,7 @@ public final class SANUtils
       // Recherche et levée des éventuelles ambiguités...
       if (t != PAWN)
       {
-        final List<Move> mvts = new ArrayList<Move>(Arrays.asList(pEtat.getValidMoves(trait)));
+          final List<Move> mvts = new ArrayList<>(Arrays.asList(pEtat.getValidMoves(trait)));
         for (int i = mvts.size() - 1; i >= 0; i--)
         {
           final Move m = mvts.get(i);

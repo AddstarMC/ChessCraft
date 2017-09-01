@@ -958,10 +958,10 @@ final class ArrayBoard extends AbstractMoveGenerator
       }
       assert h == super.hashCode();
 
-      _hashCode = Integer.valueOf(h);
+        _hashCode = h;
     }
 
-    return _hashCode.intValue();
+      return _hashCode;
   }
 
   /**

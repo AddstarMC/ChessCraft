@@ -89,38 +89,36 @@ public final class EngineCompare
         eng.getMoveFor(etat);
         final int noteDbg = eng.getScore();
         final long nodesDbg = eng.getHalfmoveCount();
-        System.out.printf(" Dbg=%+05d (%05d - %06d)", Integer.valueOf(noteDbg), Long
-            .valueOf(nodesDbg), Long.valueOf(eng.getElapsedTime() / 1000));
+          System.out.printf(" Dbg=%+05d (%05d - %06d)", noteDbg, nodesDbg, eng.getElapsedTime() / 1000);
         eng = minimaxEngine;
         final Move mvt = eng.getMoveFor(etat);
         final int noteMM = eng.getScore();
         final long nodesMM = eng.getHalfmoveCount();
-        System.out.printf(" mM=%+05d (%05d - %06d)", Integer.valueOf(noteMM),
-            Long.valueOf(nodesMM), Long.valueOf(eng.getElapsedTime() / 1000));
+          System.out.printf(" mM=%+05d (%05d - %06d)", noteMM,
+                  nodesMM, eng.getElapsedTime() / 1000);
         assert noteDbg == noteMM;
         // assert nodesDbg >= nodesMM;
         eng = enhancedMinimaxEngine;
         eng.getMoveFor(etat);
         final int noteEMM = eng.getScore();
         final long nodesEMM = eng.getHalfmoveCount();
-        System.out.printf(" mM+=%+05d (%05d - %06d)", Integer.valueOf(noteEMM), Long
-            .valueOf(nodesEMM), Long.valueOf(eng.getElapsedTime() / 1000));
+          System.out.printf(" mM+=%+05d (%05d - %06d)", noteEMM, nodesEMM, eng.getElapsedTime() / 1000);
         assert noteDbg == noteEMM;
         // assert nodesDbg >= nodesMM;
         eng = alphabetaEngine;
         eng.getMoveFor(etat);
         final int noteAB = eng.getScore();
         final long nodesAB = eng.getHalfmoveCount();
-        System.out.printf(" AB=%+05d (%05d - %06d)", Integer.valueOf(noteAB),
-            Long.valueOf(nodesAB), Long.valueOf(eng.getElapsedTime() / 1000));
+          System.out.printf(" AB=%+05d (%05d - %06d)", noteAB,
+                  nodesAB, eng.getElapsedTime() / 1000);
         assert noteMM == noteAB;
         assert nodesMM >= nodesAB;
         eng = negascoutEngine;
         eng.getMoveFor(etat);
         final int noteNg = eng.getScore();
         final long nodesNg = eng.getHalfmoveCount();
-        System.out.printf(" Ng=%+05d (%05d - %06d)", Integer.valueOf(noteNg),
-            Long.valueOf(nodesNg), Long.valueOf(eng.getElapsedTime() / 1000));
+          System.out.printf(" Ng=%+05d (%05d - %06d)", noteNg,
+                  nodesNg, eng.getElapsedTime() / 1000);
         assert noteAB == noteNg;
         // assert nodesAB >= nodesNg;
         System.out.println();

@@ -14,8 +14,8 @@ import java.util.UUID;
  *
  */
 public class PlayerTracker {
-	private final Map<UUID, Location> lastPos = new HashMap<UUID, Location>();
-	private final Map<UUID, Long> loggedOutAt = new HashMap<UUID, Long>();
+    private final Map<UUID, Location> lastPos = new HashMap<>();
+    private final Map<UUID, Long> loggedOutAt = new HashMap<>();
 
 	public void teleportPlayer(Player player, Location loc) {
 		setLastPos(player, player.getLocation());

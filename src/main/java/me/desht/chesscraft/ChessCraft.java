@@ -25,7 +25,6 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.dynmap.DynmapAPI;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -164,8 +163,8 @@ public class ChessCraft extends JavaPlugin implements ConfigurationListener, Plu
 		}
 		getServer().getScheduler().cancelTasks(this);
 		persistence.save();
-		List<BoardView> views = new ArrayList<BoardView>(BoardViewManager.getManager().listBoardViews());
-		for (BoardView view : views) {
+        List<BoardView> views = new ArrayList<>(BoardViewManager.getManager().listBoardViews());
+        for (BoardView view : views) {
 			// this will also do a temporary delete on the board's game, if any
 			BoardViewManager.getManager().deleteBoardView(view.getName(), false);
 		}
@@ -190,20 +189,22 @@ public class ChessCraft extends JavaPlugin implements ConfigurationListener, Plu
 		Plugin vault =  pm.getPlugin("Vault");
 		if (vault != null && vault.isEnabled()) {
             int ver = PluginVersionChecker.getRelease(vault.getDescription().getVersion());
-            boolean legacyMode = ver < 1003000;  // 1.3.0
             Debugger.getInstance().debug("Detected Vault v" + vault.getDescription().getVersion());
-            if (legacyMode) {
+            if (ver < 1003000) {
                 LogUtils.warning("Detected an older version of Vault.  Correct UUID functionality requires Vault 1.4.1 or later.");
-            }
-            Economy econ = setupEconomy();
-            if (econ != null) {
-                EconomyUtil.init(econ, legacyMode);
+                LogUtils.warning("Vault not loaded: game stakes not available");
             } else {
-                LogUtils.warning("No economy plugin detected - game stakes not available");
+                Economy econ = setupEconomy();
+                if (econ != null) {
+                    EconomyUtil.init(econ);
+                } else {
+                    LogUtils.warning("No economy plugin detected - game stakes not available");
+                }
             }
         } else {
 			LogUtils.warning("Vault not loaded: game stakes not available");
-		}
+
+        }
 	}
 
     private void setupSMS(PluginManager pm) {

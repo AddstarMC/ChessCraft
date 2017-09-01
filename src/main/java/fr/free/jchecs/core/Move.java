@@ -183,10 +183,10 @@ public final class Move implements Serializable
       {
         id += (_captured.ordinal() + 1) << 4;
       }
-      _id = Integer.valueOf(id);
+        _id = id;
     }
 
-    return _id.intValue();
+      return _id;
   }
 
   /**

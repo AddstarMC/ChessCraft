@@ -13,8 +13,8 @@ public class ChessBoardModifiedEvent extends ChessBoardEvent {
 
 	public ChessBoardModifiedEvent(BoardView boardView, Set<String> changedAttributes) {
 		super(boardView);
-		changed = new HashSet<String>(changedAttributes);
-	}
+        changed = new HashSet<>(changedAttributes);
+    }
 
 	public Set<String> getChangedAttributes() {
 		return changed;

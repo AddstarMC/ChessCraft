@@ -23,11 +23,11 @@ public class Results {
 
 	private final ResultsDB db;
 	private final List<ResultEntry> entries = Collections.synchronizedList(new ArrayList<ResultEntry>());
-	private final Map<String, ResultViewBase> views = new ConcurrentHashMap<String, ResultViewBase>();
+    private final Map<String, ResultViewBase> views = new ConcurrentHashMap<>();
 
 	private boolean databaseLoaded = false;
 
-	private final BlockingQueue<DatabaseSavable> pendingUpdates = new LinkedBlockingQueue<DatabaseSavable>();
+    private final BlockingQueue<DatabaseSavable> pendingUpdates = new LinkedBlockingQueue<>();
 
 	/**
 	 * Create the singleton results handler - only called from getResultsHandler once

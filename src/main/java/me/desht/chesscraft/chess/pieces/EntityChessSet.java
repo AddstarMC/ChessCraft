@@ -63,8 +63,8 @@ public class EntityChessSet extends ChessSet {
 	}
 
 	private Map<Integer, ConfigurationSection> loadPieces(ConfigurationSection cs) {
-		Map<Integer,ConfigurationSection> map = new HashMap<Integer, ConfigurationSection>();
-		loadPieces(map, Chess.WHITE, cs.getConfigurationSection("white"));
+        Map<Integer, ConfigurationSection> map = new HashMap<>();
+        loadPieces(map, Chess.WHITE, cs.getConfigurationSection("white"));
 		loadPieces(map, Chess.BLACK, cs.getConfigurationSection("black"));
 		return map;
 	}

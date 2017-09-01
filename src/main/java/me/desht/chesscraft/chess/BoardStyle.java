@@ -1,11 +1,11 @@
-/**
+
+package me.desht.chesscraft.chess;
+/*
  * Programmer: Jacob Scott
  * Program Name: BoardStyle
  * Description: for wrapping up all board settings
  * Date: Jul 29, 2011
  */
-package me.desht.chesscraft.chess;
-
 import me.desht.chesscraft.ChessPersistence;
 import me.desht.chesscraft.ChessValidate;
 import me.desht.chesscraft.DirectoryStructure;

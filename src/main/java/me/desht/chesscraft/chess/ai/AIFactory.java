@@ -32,9 +32,9 @@ public class AIFactory {
 	private static final String AI_ALIASES_FILE = "AI.yml";
 	private static final String AI_CORE_DEFS = "/AI_settings.yml";
 
-	private final HashMap<String, ChessAI> runningAIs = new HashMap<String, ChessAI>();
-	private final Map<String, AIDefinition> allAliases = new HashMap<String, AIDefinition>();
-	private final Map<String, AIDefinition> coreDefs = new HashMap<String, AIDefinition>();
+    private final HashMap<String, ChessAI> runningAIs = new HashMap<>();
+    private final Map<String, AIDefinition> allAliases = new HashMap<>();
+    private final Map<String, AIDefinition> coreDefs = new HashMap<>();
 
 	private static AIFactory instance;
 
@@ -99,8 +99,8 @@ public class AIFactory {
 	 * Clear down all running AIs. Called on disable.
 	 */
 	public void clearDown() {
-		List<ChessAI> l = new ArrayList<ChessAI>();
-		for (Entry<String, ChessAI> e : runningAIs.entrySet()) {
+        List<ChessAI> l = new ArrayList<>();
+        for (Entry<String, ChessAI> e : runningAIs.entrySet()) {
 			l.add(e.getValue());
 		}
 		for (ChessAI ai : l) {
@@ -113,15 +113,15 @@ public class AIFactory {
 	}
 	public List<AIDefinition> listAIDefinitions(boolean isSorted) {
 		if (isSorted) {
-			SortedSet<String> sorted = new TreeSet<String>(allAliases.keySet());
-			List<AIDefinition> res = new ArrayList<AIDefinition>();
-			for (String name : sorted) {
+            SortedSet<String> sorted = new TreeSet<>(allAliases.keySet());
+            List<AIDefinition> res = new ArrayList<>();
+            for (String name : sorted) {
 				res.add(allAliases.get(name));
 			}
 			return res;
 		} else {
-			return new ArrayList<AIDefinition>(allAliases.values());
-		}
+            return new ArrayList<>(allAliases.values());
+        }
 	}
 
 	/**
@@ -155,8 +155,8 @@ public class AIFactory {
 	 * @throws ChessException if there are no free AIs
 	 */
 	public String getFreeAIName() {
-		List<String> free = new ArrayList<String>();
-		for (String k : allAliases.keySet()) {
+        List<String> free = new ArrayList<>();
+        for (String k : allAliases.keySet()) {
 			if (isAvailable(k) && allAliases.get(k).isEnabled()) {
 				free.add(k);
 			}
@@ -260,8 +260,8 @@ public class AIFactory {
 		}
 
 		public List<String> getDetails() {
-			List<String> res = new ArrayList<String>();
-			res.add("AI " + getDisplayName() + " (" + getImplClassName() + ") :");
+            List<String> res = new ArrayList<>();
+            res.add("AI " + getDisplayName() + " (" + getImplClassName() + ") :");
 			for (String k : MiscUtil.asSortedList(params.getKeys(false))) {
 				res.add(ChatColor.DARK_RED + "* " + ChatColor.WHITE + k + ": " + ChatColor.YELLOW + params.get(k));
 			}

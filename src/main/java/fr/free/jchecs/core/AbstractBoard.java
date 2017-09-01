@@ -234,31 +234,31 @@ abstract class AbstractBoard implements Board
     }
     if (res == 0)
     {
-      res = Boolean.valueOf(_whiteActive).compareTo(Boolean.valueOf(pEchiquier.isWhiteActive()));
+        res = Boolean.valueOf(_whiteActive).compareTo(pEchiquier.isWhiteActive());
     }
     if (res == 0)
     {
       res =
           Boolean.valueOf(_blackCastleLong).compareTo(
-              Boolean.valueOf(pEchiquier.canCastleLong(false)));
+                  pEchiquier.canCastleLong(false));
     }
     if (res == 0)
     {
       res =
           Boolean.valueOf(_blackCastleShort).compareTo(
-              Boolean.valueOf(pEchiquier.canCastleShort(false)));
+                  pEchiquier.canCastleShort(false));
     }
     if (res == 0)
     {
       res =
           Boolean.valueOf(_whiteCastleLong).compareTo(
-              Boolean.valueOf(pEchiquier.canCastleLong(true)));
+                  pEchiquier.canCastleLong(true));
     }
     if (res == 0)
     {
       res =
           Boolean.valueOf(_whiteCastleShort).compareTo(
-              Boolean.valueOf(pEchiquier.canCastleShort(true)));
+                  pEchiquier.canCastleShort(true));
     }
 
     return res;

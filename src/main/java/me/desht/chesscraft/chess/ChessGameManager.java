@@ -19,10 +19,10 @@ import java.util.*;
 public class ChessGameManager {
 	private static ChessGameManager instance = null;
 
-	private final Set<ChessGame> needToMigrate = new HashSet<ChessGame>();
+    private final Set<ChessGame> needToMigrate = new HashSet<>();
 
-	private final Map<String,ChessGame> chessGames = new HashMap<String,ChessGame>();
-	private final Map<UUID,ChessGame> currentGame = new HashMap<UUID, ChessGame>();
+    private final Map<String, ChessGame> chessGames = new HashMap<>();
+    private final Map<UUID, ChessGame> currentGame = new HashMap<>();
 
 	private ChessGameManager() {
 	}
@@ -55,8 +55,8 @@ public class ChessGameManager {
 	private void unregisterGame(String gameName) {
 		ChessGame game = getGame(gameName);
 
-		List<UUID> toRemove = new ArrayList<UUID>();
-		for (UUID playerId : currentGame.keySet()) {
+        List<UUID> toRemove = new ArrayList<>();
+        for (UUID playerId : currentGame.keySet()) {
 			if (currentGame.get(playerId) == game) {
 				toRemove.add(playerId);
 			}
@@ -91,9 +91,9 @@ public class ChessGameManager {
 	}
 
 	public Collection<ChessGame> listGamesSorted() {
-		SortedSet<String> sorted = new TreeSet<String>(chessGames.keySet());
-		List<ChessGame> res = new ArrayList<ChessGame>();
-		for (String name : sorted) {
+        SortedSet<String> sorted = new TreeSet<>(chessGames.keySet());
+        List<ChessGame> res = new ArrayList<>();
+        for (String name : sorted) {
 			res.add(chessGames.get(name));
 		}
 		return res;
@@ -160,8 +160,8 @@ public class ChessGameManager {
 	}
 
 	public Map<UUID, String> getCurrentGames() {
-		Map<UUID, String> res = new HashMap<UUID, String>();
-		for (UUID s : currentGame.keySet()) {
+        Map<UUID, String> res = new HashMap<>();
+        for (UUID s : currentGame.keySet()) {
 			ChessGame game = currentGame.get(s);
 			if (game != null) {
 				res.put(s, game.getName());
@@ -249,9 +249,9 @@ public class ChessGameManager {
 	 * Carry out the migration of old-style player names to UUIDs.  This is done asynchronously.
 	 */
 	public void checkForUUIDMigration() {
-		final List<String> names = new ArrayList<String>();
-		final List<GameAndColour> gameAndColours = new ArrayList<GameAndColour>();
-		for (ChessGame game : needToMigrate) {
+        final List<String> names = new ArrayList<>();
+        final List<GameAndColour> gameAndColours = new ArrayList<>();
+        for (ChessGame game : needToMigrate) {
 			if (game.hasPlayer(Chess.WHITE) && game.getPlayer(Chess.WHITE).isHuman()) {
 				HumanChessPlayer hcp = (HumanChessPlayer) game.getPlayer(Chess.WHITE);
 				if (hcp.getOldStyleName() != null) {

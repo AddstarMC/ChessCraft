@@ -32,7 +32,7 @@ public final class EngineFactory
 {
   /** Liste des moteurs d'IA internes. */
   private static final Map<String, Class<? extends Engine>> INTERNAL_ENGINES =
-      new HashMap<String, Class<? extends Engine>>();
+          new HashMap<>();
   static
   {
     INTERNAL_ENGINES.put("jChecs.AlphaBeta", AlphaBetaEngine.class);
@@ -93,12 +93,7 @@ public final class EngineFactory
       try
       {
         res = cls.newInstance();
-      }
-      catch (final InstantiationException e)
-      {
-        LOGGER.fine(e.toString());
-      }
-      catch (final IllegalAccessException e)
+      } catch (final InstantiationException | IllegalAccessException e)
       {
         LOGGER.fine(e.toString());
       }

@@ -70,8 +70,8 @@ public class PieceDesigner {
 			Debugger.getInstance().debug("Designer: rotate templates by " + rotation + " degrees for colour " + colour + " & board orientation " + view.getRotation());
 
 			// reverse mapping of character to material name
-			Map<String,Character> reverseMap = new HashMap<String, Character>();
-			char nextChar = 'A';
+            Map<String, Character> reverseMap = new HashMap<>();
+            char nextChar = 'A';
 
 			for (int p = Chess.MIN_PIECE + 1; p <= Chess.MAX_PIECE; p++) {
 				// get the bounding box for the materials in this square
@@ -161,8 +161,8 @@ public class PieceDesigner {
 	 * @return the black material map, or null if no valid mappings found in B2-E2
 	 */
 	private MaterialMap initBlackMaterialMap(MaterialMap whiteMap) {
-		Map<String,Character> reverseMap = new HashMap<String,Character>();
-		MaterialMap blackMap = new MaterialMap();
+        Map<String, Character> reverseMap = new HashMap<>();
+        MaterialMap blackMap = new MaterialMap();
 		for (Entry<Character, MaterialWithData> e : whiteMap.getMap().entrySet()) {
 			blackMap.put(e.getKey(), e.getValue());
 			reverseMap.put(e.getValue().toString(), e.getKey());

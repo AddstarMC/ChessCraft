@@ -45,8 +45,8 @@ public class BoardView implements PositionListener, PositionChangeListener, Game
 
 	// map attribute names as typed in-game to the corresponding key in the save file
 	// backward compatibility is such fun!
-	private static final Map<String, String> attr2save = new HashMap<String, String>();
-	private static final Map<String, String> save2attr = new HashMap<String, String>();
+	private static final Map<String, String> attr2save = new HashMap<>();
+	private static final Map<String, String> save2attr = new HashMap<>();
 	static {
 		attr2save.put(DEFAULT_STAKE, "defaultStake");
 		attr2save.put(LOCK_STAKE, "lockStake");
@@ -162,12 +162,12 @@ public class BoardView implements PositionListener, PositionChangeListener, Game
 
 	@Override
 	public Map<String, Object> serialize() {
-		Map<String, Object> result = new HashMap<String, Object>();
+		Map<String, Object> result = new HashMap<>();
 		result.put("name", name);
 		result.put("game", game == null ? "" : game.getName());
 		result.put("origin", ChessPersistence.freezeLocation(chessBoard.getA1Center()));
 		result.put("direction", chessBoard.getRotation().name());
-		Map<String, Object> d = new HashMap<String, Object>();
+		Map<String, Object> d = new HashMap<>();
 		if (isDesigning()) {
 			d.put("setName", chessBoard.getDesigner().getSetName());
 			d.put("playerName", chessBoard.getDesigner().getPlayerId().toString());
@@ -649,7 +649,7 @@ public class BoardView implements PositionListener, PositionChangeListener, Game
 	}
 
 	public List<String> getBoardDetail() {
-		List<String> res = new ArrayList<String>();
+		List<String> res = new ArrayList<>();
 
 		String bullet = MessagePager.BULLET + ChatColor.YELLOW;
 		Cuboid bounds = getOuterBounds();

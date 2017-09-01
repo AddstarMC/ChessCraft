@@ -54,15 +54,15 @@ public final class EngineBench
     final String [] nomsMoteurs = EngineFactory.getNames();
     final Engine [] listeMoteurs = new Engine [ nomsMoteurs.length ];
     final int nbMoteurs = listeMoteurs.length;
-    final Map<String, Long> nbDemiCoups = new HashMap<String, Long>();
-    final Map<String, Long> durees = new HashMap<String, Long>();
+      final Map<String, Long> nbDemiCoups = new HashMap<>();
+      final Map<String, Long> durees = new HashMap<>();
     for (int i = 0; i < nomsMoteurs.length; i++)
     {
       listeMoteurs[i] = EngineFactory.newInstance(nomsMoteurs[i]);
-      nbDemiCoups.put(nomsMoteurs[i], Long.valueOf(0));
-      durees.put(nomsMoteurs[i], Long.valueOf(0));
+        nbDemiCoups.put(nomsMoteurs[i], 0L);
+        durees.put(nomsMoteurs[i], 0L);
     }
-    final Map<Boolean, Engine> joueurs = new HashMap<Boolean, Engine>();
+      final Map<Boolean, Engine> joueurs = new HashMap<>();
     for (int b = 0; b < nbMoteurs; b++)
     {
       joueurs.put(Boolean.TRUE, listeMoteurs[b]);
@@ -106,18 +106,18 @@ public final class EngineBench
               }
               break;
             }
-            final Engine ia = joueurs.get(Boolean.valueOf(trait));
+              final Engine ia = joueurs.get(trait);
             final Move mvt = ia.getMoveFor(etat);
             etat = etat.derive(mvt, true);
           }
-          nbDemiCoups.put(nomsMoteurs[n], Long.valueOf(nbDemiCoups.get(nomsMoteurs[n]).longValue()
-              + listeMoteurs[n].getHalfmoveCount()));
-          durees.put(nomsMoteurs[n], Long.valueOf(durees.get(nomsMoteurs[n]).longValue()
-              + listeMoteurs[n].getElapsedTime()));
-          nbDemiCoups.put(nomsMoteurs[b], Long.valueOf(nbDemiCoups.get(nomsMoteurs[b]).longValue()
-              + listeMoteurs[b].getHalfmoveCount()));
-          durees.put(nomsMoteurs[b], Long.valueOf(durees.get(nomsMoteurs[b]).longValue()
-              + listeMoteurs[b].getElapsedTime()));
+            nbDemiCoups.put(nomsMoteurs[n], nbDemiCoups.get(nomsMoteurs[n]).longValue()
+                    + listeMoteurs[n].getHalfmoveCount());
+            durees.put(nomsMoteurs[n], durees.get(nomsMoteurs[n]).longValue()
+                    + listeMoteurs[n].getElapsedTime());
+            nbDemiCoups.put(nomsMoteurs[b], nbDemiCoups.get(nomsMoteurs[b]).longValue()
+                    + listeMoteurs[b].getHalfmoveCount());
+            durees.put(nomsMoteurs[b], durees.get(nomsMoteurs[b]).longValue()
+                    + listeMoteurs[b].getElapsedTime());
         }
         System.out.println();
         System.out.println("     => " + (scoreBlancs / 2.0F) + " / " + (scoreNoirs / 2.0F));
@@ -127,8 +127,8 @@ public final class EngineBench
     for (final Engine eng : listeMoteurs)
     {
       final String nomMoteur = eng.toString();
-      final long demisCoups = nbDemiCoups.get(nomMoteur).longValue();
-      final long duree = durees.get(nomMoteur).longValue();
+        final long demisCoups = nbDemiCoups.get(nomMoteur);
+        final long duree = durees.get(nomMoteur);
       System.out.println(" - " + nomMoteur + " : " + demisCoups + " demi-coups évalués en " + duree
           + "ms, soit " + (int) (1000.0 / duree * demisCoups) + " demi-coups/s");
     }

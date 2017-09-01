@@ -76,12 +76,12 @@ public enum Piece
   WHITE_ROOK('R', true, ROOK);
 
   /** Transpositions lettres FEN / pièces. */
-  private static final Map<Character, Piece> FEN_TO_PIECE = new HashMap<Character, Piece>();
+  private static final Map<Character, Piece> FEN_TO_PIECE = new HashMap<>();
   static
   {
     for (final Piece p : values())
     {
-      FEN_TO_PIECE.put(Character.valueOf(p.getFENLetter()), p);
+        FEN_TO_PIECE.put(p.getFENLetter(), p);
     }
   }
 
@@ -101,7 +101,7 @@ public enum Piece
    * @param pBlanc Drapeau à vrai pour une pièce blanche.
    * @param pType Type de la pièce.
    */
-  private Piece(final char pLettre, final boolean pBlanc, final PieceType pType)
+  Piece(final char pLettre, final boolean pBlanc, final PieceType pType)
   {
     assert pType != null;
 
@@ -149,6 +149,6 @@ public enum Piece
    */
   public static Piece valueOf(final char pLettre)
   {
-    return FEN_TO_PIECE.get(Character.valueOf(pLettre));
+      return FEN_TO_PIECE.get(pLettre);
   }
 }

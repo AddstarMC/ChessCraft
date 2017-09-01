@@ -1,11 +1,11 @@
-/**
+
+package me.desht.chesscraft.chess.pieces;
+/*
  * Programmer: Jacob Scott
  * Program Name: ChessSet
  * Description: wrapper for all of the chess sets
  * Date: Jul 28, 2011
  */
-package me.desht.chesscraft.chess.pieces;
-
 import chesspresso.Chess;
 import chesspresso.position.Position;
 import com.google.common.base.Joiner;
@@ -58,7 +58,7 @@ public class BlockChessSet extends ChessSet {
 	// where white & black pieces have different templates, this will be non-null
 	private final ChessPieceTemplate[] templatesBlack;
 	// cache of instantiated chess stones
-	private final Map<String, ChessStone> stoneCache = new HashMap<String, ChessStone>();
+	private final Map<String, ChessStone> stoneCache = new HashMap<>();
 
 	/**
 	 * Package-protected constructor.  Initialise a chess set from saved data.
@@ -177,7 +177,7 @@ public class BlockChessSet extends ChessSet {
 	 * @return the mapping
 	 */
 	Map<String, String> getWhiteToBlack() {
-		Map<String,String> res = new HashMap<String, String>();
+		Map<String, String> res = new HashMap<>();
 
 		for (Entry<Character,MaterialWithData> e : materialMapWhite.getMap().entrySet()) {
 			String w = e.getValue().toString();

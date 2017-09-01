@@ -1,11 +1,11 @@
-/**
+
+package me.desht.chesscraft.chess;
+/*
  * Programmer: Jacob Scott
  * Program Name: ChessBoard
  * Description: for handling the chess board
  * Date: Jul 28, 2011
  */
-package me.desht.chesscraft.chess;
-
 import chesspresso.Chess;
 import chesspresso.position.Position;
 import me.desht.chesscraft.ChessCraft;
@@ -25,6 +25,7 @@ import me.desht.dhutils.cuboid.Cuboid;
 import me.desht.dhutils.cuboid.Cuboid.CuboidDirection;
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.material.MaterialData;
 import org.bukkit.material.Wool;
@@ -310,8 +311,8 @@ public class ChessBoard {
 	 */
 	void paintAll(MassBlockUpdate mbu) {
 		if (designer == null) {
-			fullBoard.fill(0, (byte)0, mbu);
-		}
+            fullBoard.fill(new MaterialData(Material.AIR), mbu);
+        }
 		paintEnclosure(mbu);
 		paintFrame(mbu);
 		paintBoard(mbu);
@@ -430,8 +431,10 @@ public class ChessBoard {
 		case CHEQUERED:
 			for (Block b : sq) {
 				if ((b.getLocation().getBlockX() - b.getLocation().getBlockZ()) % 2 == 0) {
-                    b.setTypeIdAndData(squareHighlightColor.getItemTypeId(), squareHighlightColor.getData(), false);
-				}
+                    Material mat = squareHighlightColor.getItemType();
+                    b.setType(mat, false);
+                    b.setData(squareHighlightColor.getData());
+                }
 			}
 			break;
 		default:

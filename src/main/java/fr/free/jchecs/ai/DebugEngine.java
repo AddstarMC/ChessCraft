@@ -58,9 +58,9 @@ final class DebugEngine extends AbstractEngine
 
     final int l = pCoups.length;
     assert l > 0;
-    final Map<Board, BoardScore> echiquiersRang1 = new HashMap<Board, BoardScore>(l);
-    final Map<Board, BoardScore> echiquiersRang2 = new HashMap<Board, BoardScore>(l * 25);
-    final List<BoardScore> echiquiersRang3 = new ArrayList<BoardScore>(l * 25 * 25);
+      final Map<Board, BoardScore> echiquiersRang1 = new HashMap<>(l);
+      final Map<Board, BoardScore> echiquiersRang2 = new HashMap<>(l * 25);
+      final List<BoardScore> echiquiersRang3 = new ArrayList<>(l * 25 * 25);
     Move res = pCoups[0];
     addHalfmove(l);
     for (final Move mvt1 : pCoups)

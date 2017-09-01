@@ -1,6 +1,5 @@
 package me.desht.chesscraft.controlpanel;
 
-import chesspresso.Chess;
 import me.desht.chesscraft.chess.ChessGame;
 import me.desht.chesscraft.chess.TimeControlDefs;
 import me.desht.chesscraft.enums.GameState;

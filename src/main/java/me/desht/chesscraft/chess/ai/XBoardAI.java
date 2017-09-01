@@ -31,7 +31,7 @@ public class XBoardAI extends ChessAI {
 			Pattern.compile("(Illegal move.+)|(Error.+)", Pattern.CASE_INSENSITIVE);
 
 	private final ExternalIO io;
-	private final Map<String,String> features = new ConcurrentHashMap<String, String>();
+    private final Map<String, String> features = new ConcurrentHashMap<>();
 
 	private boolean moveFormatSAN = false;
 

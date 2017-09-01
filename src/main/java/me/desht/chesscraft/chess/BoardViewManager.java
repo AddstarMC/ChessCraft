@@ -13,7 +13,7 @@ import me.desht.dhutils.LogUtils;
 import me.desht.dhutils.MiscUtil;
 import me.desht.dhutils.PermissionUtils;
 import me.desht.dhutils.PersistableLocation;
-import me.desht.dhutils.block.BlockType;
+import com.sk89q.worldedit.blocks.BlockType;
 import me.desht.dhutils.cuboid.Cuboid;
 import me.desht.dhutils.cuboid.Cuboid.CuboidDirection;
 import org.bukkit.Bukkit;
@@ -29,11 +29,11 @@ public class BoardViewManager {
 
 	private static BoardViewManager instance = null;
 
-	private final Map<String, BoardView> chessBoards = new HashMap<String, BoardView>();
-	private final Map<String, Set<File>> deferred = new HashMap<String, Set<File>>();
-	private PersistableLocation globalTeleportOutDest = null;
+    private final Map<String, BoardView> chessBoards = new HashMap<>();
+    private final Map<String, Set<File>> deferred = new HashMap<>();
+    private PersistableLocation globalTeleportOutDest = null;
 
-	private final List<Cuboid> flightRegions = new ArrayList<Cuboid>();
+    private final List<Cuboid> flightRegions = new ArrayList<>();
 
 	private BoardViewManager() {
 	}
@@ -138,9 +138,9 @@ public class BoardViewManager {
 	}
 
 	public Collection<BoardView> listBoardViewsSorted() {
-		SortedSet<String> sorted = new TreeSet<String>(chessBoards.keySet());
-		List<BoardView> res = new ArrayList<BoardView>();
-		for (String name : sorted) {
+        SortedSet<String> sorted = new TreeSet<>(chessBoards.keySet());
+        List<BoardView> res = new ArrayList<>();
+        for (String name : sorted) {
 			res.add(chessBoards.get(name));
 		}
 		return res;
@@ -296,8 +296,8 @@ public class BoardViewManager {
 	 */
 	public void deferLoading(String worldName, File f) {
 		if (!deferred.containsKey(worldName)) {
-			deferred.put(worldName, new HashSet<File>());
-		}
+            deferred.put(worldName, new HashSet<>());
+        }
 		deferred.get(worldName).add(f);
 	}
 
@@ -323,8 +323,8 @@ public class BoardViewManager {
 	 * @param worldName name of the world
 	 */
 	public void unloadBoardsForWorld(String worldName) {
-		for (BoardView bv : new ArrayList<BoardView>(listBoardViews())) {
-			if (bv.getWorldName().equals(worldName)) {
+        for (BoardView bv : new ArrayList<>(listBoardViews())) {
+            if (bv.getWorldName().equals(worldName)) {
 				BoardViewManager.getManager().deleteBoardView(bv.getName(), false);
 				File f = new File(bv.getSaveDirectory(), ChessPersistence.makeSafeFileName(bv.getName()) + ".yml");
 				deferLoading(bv.getWorldName(), f);
@@ -340,8 +340,8 @@ public class BoardViewManager {
 	 * @return the boardview containing the chunk, or null
 	 */
 	public BoardView getBoardViewForChunk(Chunk chunk) {
-		for (BoardView bv : new ArrayList<BoardView>(listBoardViews())) {
-			Cuboid c = bv.getOuterBounds();
+        for (BoardView bv : new ArrayList<>(listBoardViews())) {
+            Cuboid c = bv.getOuterBounds();
 			if (!c.getWorld().equals(chunk.getWorld())) {
 				continue;
 			}

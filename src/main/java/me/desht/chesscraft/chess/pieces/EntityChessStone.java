@@ -19,6 +19,8 @@ import org.bukkit.entity.Skeleton.SkeletonType;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.logging.Logger;
+
 public class EntityChessStone extends ChessStone {
 
 	private final NPC npc;
@@ -52,14 +54,16 @@ public class EntityChessStone extends ChessStone {
 			npc.getNavigator().getLocalParameters().speedModifier(4.5f);
 			break;
 		case SKELETON:
-			SkeletonType st = SkeletonType.valueOf(details.getString("variant", "normal").toUpperCase());
-			((Skeleton)entity).setSkeletonType(st);
-			break;
+            if ((details.getString("variant") != null)) {
+                Bukkit.getLogger().info("CHESSCRAFT: Attempt to set a  variant - these variants are now entities : " + (details.getString("variant")));
+            }
+            break;
 		case HORSE:
-			Horse.Variant hv = Horse.Variant.valueOf(details.getString("variant", "horse").toUpperCase());
-			Horse.Color hc = Horse.Color.valueOf(details.getString("color", "brown").toUpperCase());
+            if ((details.getString("variant") != null)) {
+                Bukkit.getLogger().info("CHESSCRAFT: Attempt to set a  variant - these variants are now entities : " + (details.getString("variant")));
+            }
+            Horse.Color hc = Horse.Color.valueOf(details.getString("color", "brown").toUpperCase());
 			Horse.Style hs = Horse.Style.valueOf(details.getString("style", "none").toUpperCase());
-			((Horse) entity).setVariant(hv);
 			((Horse) entity).setColor(hc);
 			((Horse) entity).setStyle(hs);
 			break;
@@ -90,7 +94,11 @@ public class EntityChessStone extends ChessStone {
 		case ZOMBIE:
 			// zombies don't implement Ageable; they have their own adult/baby API
 			((Zombie)entity).setBaby(details.getBoolean("baby", false));
-			((Zombie)entity).setVillager(details.getBoolean("villager", false));
+            if (details.getBoolean("villager")) {
+                Bukkit.getLogger().info("CHESSCRAFT: Attempt to set a  zombie villager - these variants are now entities ");
+
+            }
+
 			if (((Zombie)entity).isBaby()) {
 				npc.getNavigator().getLocalParameters().speedModifier(1.0f);
 			}

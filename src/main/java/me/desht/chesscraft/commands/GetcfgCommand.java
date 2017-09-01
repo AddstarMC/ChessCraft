@@ -42,8 +42,8 @@ public class GetcfgCommand extends ChessAbstractCommand {
 	}
 
 	public List<String> getPluginConfiguration(String section) {
-		ArrayList<String> res = new ArrayList<String>();
-		Configuration config = ChessCraft.getInstance().getConfig();
+        ArrayList<String> res = new ArrayList<>();
+        Configuration config = ChessCraft.getInstance().getConfig();
 		ConfigurationSection cs = config.getRoot();
 
 		Set<String> items;
@@ -54,8 +54,8 @@ public class GetcfgCommand extends ChessAbstractCommand {
 				cs = config.getConfigurationSection(section);
 				items = config.getDefaults().getConfigurationSection(section).getKeys(true);
 			} else {
-				items = new HashSet<String>();
-				if (config.getDefaults().contains(section))
+                items = new HashSet<>();
+                if (config.getDefaults().contains(section))
 					items.add(section);
 			}
 		}

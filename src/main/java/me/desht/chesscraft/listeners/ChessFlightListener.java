@@ -37,13 +37,13 @@ public class ChessFlightListener extends ChessListenerBase {
 
 	// notes if the player is currently allowed to fly due to being on/near a board
 	// maps the player name to the previous flight speed for the player
-	private final Map<UUID,PreviousSpeed> allowedToFly = new HashMap<UUID,PreviousSpeed>();
+    private final Map<UUID, PreviousSpeed> allowedToFly = new HashMap<>();
 
 	// notes when a player was last messaged about flight, to reduce spam
-	private final Map<UUID,Long> lastMessagedIn = new HashMap<UUID,Long>();
-	private final Map<UUID,Long> lastMessagedOut = new HashMap<UUID,Long>();
-	// notes when player was last bounced back while flying
-	private final Map<UUID,Long> lastBounce = new HashMap<UUID, Long>();
+    private final Map<UUID, Long> lastMessagedIn = new HashMap<>();
+    private final Map<UUID, Long> lastMessagedOut = new HashMap<>();
+    // notes when player was last bounced back while flying
+    private final Map<UUID, Long> lastBounce = new HashMap<>();
 
 	private boolean enabled;
 	private boolean captive;
@@ -365,8 +365,8 @@ public class ChessFlightListener extends ChessListenerBase {
 		private final float walkSpeed;
 
 		public PreviousSpeed(Player p) {
-			player = new WeakReference<Player>(p);
-			flySpeed = p.getFlySpeed();
+            player = new WeakReference<>(p);
+            flySpeed = p.getFlySpeed();
 			walkSpeed = p.getWalkSpeed();
 			Debugger.getInstance().debug("player " + p.getName() + ": store previous speed: walk=" + walkSpeed + " fly=" + flySpeed);
 		}

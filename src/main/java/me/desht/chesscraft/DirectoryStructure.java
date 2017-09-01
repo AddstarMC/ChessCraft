@@ -158,11 +158,10 @@ public class DirectoryStructure {
 	 * Find a YAML resource file in the given directory.  Look first in the custom/ subdirectory
 	 * and then in the directory itself.
 	 *
-	 * @param dir
-	 * @param filename
-	 * @param saving
-	 * @return
-	 * @throws ChessException
+	 * @param dir the directoy
+	 * @param filename the filename
+	 * @return File
+	 * @throws ChessException if no file exists
 	 */
 	public static File getResourceFileForLoad(File dir, String filename) throws ChessException {
 		// try the lower-cased form first, if that fails try the exact filename

@@ -70,7 +70,7 @@ public class JoinCommand extends ChessAbstractCommand {
 	}
 
 	private List<String> getInvitedGameCompletions(Player player, String prefix) {
-		List<String> res = new ArrayList<String>();
+        List<String> res = new ArrayList<>();
 
 		for (ChessGame game : ChessGameManager.getManager().listGames()) {
 			if (game.getName().startsWith(prefix) && game.isOpenInvite() || player.getUniqueId().equals(game.getInvitedId())) {

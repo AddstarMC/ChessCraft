@@ -22,7 +22,7 @@ public class TimeControlDefs {
 	private final List<TCDef> extraDefs;
 
 	public static void loadBaseDefs() {
-		baseDefs = new ArrayList<TimeControlDefs.TCDef>();
+        baseDefs = new ArrayList<>();
 
 		File f = new File(ChessCraft.getInstance().getDataFolder(), TIME_CONTROLS_FILE);
 		Configuration c;
@@ -62,9 +62,9 @@ public class TimeControlDefs {
 			loadBaseDefs();
 
 		idx = 0;
-		allDefs = new ArrayList<TCDef>(baseDefs);
-		extraDefs = new ArrayList<TCDef>();
-	}
+        allDefs = new ArrayList<>(baseDefs);
+        extraDefs = new ArrayList<>();
+    }
 
 	public void reload() {
 		idx = 0;

@@ -22,7 +22,7 @@ public class TwoPlayerClock implements ConfigurationSerializable {
 
     @Override
     public Map<String, Object> serialize() {
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
         map.put("tc", timeControl.getSpec());
         map.put("elapsed0", elapsed[0]);
         map.put("elapsed1", elapsed[1]);

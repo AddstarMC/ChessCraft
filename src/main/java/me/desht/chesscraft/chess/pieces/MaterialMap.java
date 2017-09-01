@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MaterialMap {
-	private final Map<Character,MaterialWithData> map = new HashMap<Character, MaterialWithData>();
+    private final Map<Character, MaterialWithData> map = new HashMap<>();
 
 	public void put(char c, MaterialWithData mat) {
 		map.put(c, mat);

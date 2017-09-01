@@ -48,7 +48,7 @@ public class BoardStyleSetCommand extends ChessAbstractCommand {
 		AttributeCollection viewAttrs = bv.getAttributes();
 		AttributeCollection styleAttrs = style.getAttributes();
 		boolean styleHasChanged = false;
-		Set<String> changedAttrs = new HashSet<String>();
+        Set<String> changedAttrs = new HashSet<>();
 
 		for (int i = 0; i < args.length; i += 2) {
 			String attr = args[i];
@@ -98,9 +98,9 @@ public class BoardStyleSetCommand extends ChessAbstractCommand {
 		AttributeCollection viewAttrs = bv.getAttributes();
 		if (args.length % 2 == 1) {
 			// provide attribute completions
-			List<String> attrs = new ArrayList<String>(styleAttrs.listAttributeKeys(false));
-			attrs.addAll(new ArrayList<String>(viewAttrs.listAttributeKeys(false)));
-			return filterPrefix(sender, attrs, args[l - 1]);
+            List<String> attrs = new ArrayList<>(styleAttrs.listAttributeKeys(false));
+            attrs.addAll(new ArrayList<>(viewAttrs.listAttributeKeys(false)));
+            return filterPrefix(sender, attrs, args[l - 1]);
 		} else {
 			// provide value completions for last attribute
 			String attr = args[l - 2];

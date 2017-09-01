@@ -161,15 +161,12 @@ public class AIChessPlayer extends ChessPlayer {
 				int to = ai.getPendingTo();
 				try {
 					getGame().doMove(getId(), from, to);
-				} catch (IllegalMoveException e) {
-					getGame().alert(Messages.getString("ChessAI.AIunexpectedException", e.getMessage())); //$NON-NLS-1$
-					ai.setFailed(true);
-				} catch (ChessException e) {
-					getGame().alert(Messages.getString("ChessAI.AIunexpectedException", e.getMessage())); //$NON-NLS-1$
+                } catch (IllegalMoveException | ChessException e) {
+                    getGame().alert(Messages.getString("ChessAI.AIunexpectedException", e.getMessage())); //$NON-NLS-1$
 					ai.setFailed(true);
 				}
-				break;
-			case DRAW_OFFERED:
+                break;
+                case DRAW_OFFERED:
 				game.offerDraw(getId());
 				break;
 			case DRAW_ACCEPTED:

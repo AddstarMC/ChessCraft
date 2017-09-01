@@ -32,7 +32,7 @@ public abstract class ChessAbstractCommand extends AbstractCommand {
 	}
 
 	protected List<String> getGameCompletions(Plugin plugin, CommandSender sender, String prefix) {
-		List<String> res = new ArrayList<String>();
+        List<String> res = new ArrayList<>();
 
 		for (ChessGame game : ChessGameManager.getManager().listGames()) {
 			if (game.getName().startsWith(prefix)) {
@@ -46,8 +46,8 @@ public abstract class ChessAbstractCommand extends AbstractCommand {
 	protected List<String> getPlayerInGameCompletions(Plugin plugin, CommandSender sender, String prefix) {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
-			List<String> res = new ArrayList<String>();
-			for (ChessGame game : ChessGameManager.getManager().listGames()) {
+            List<String> res = new ArrayList<>();
+            for (ChessGame game : ChessGameManager.getManager().listGames()) {
 				if (game.getName().startsWith(prefix) && game.getPlayer(player.getUniqueId().toString()) != null) {
 					res.add(game.getName());
 				}
@@ -59,7 +59,7 @@ public abstract class ChessAbstractCommand extends AbstractCommand {
 	}
 
 	protected List<String> getBoardCompletions(Plugin plugin, CommandSender sender, String prefix) {
-		List<String> res = new ArrayList<String>();
+        List<String> res = new ArrayList<>();
 
 		for (BoardView bv : BoardViewManager.getManager().listBoardViews()) {
 			if (bv.getName().startsWith(prefix)) {
@@ -78,8 +78,8 @@ public abstract class ChessAbstractCommand extends AbstractCommand {
 	}
 
 	protected List<String> getPlayerCompletions(Plugin plugin, CommandSender sender, String prefix, boolean aiOnly) {
-		List<String> res = new ArrayList<String>();
-		if (!aiOnly) {
+        List<String> res = new ArrayList<>();
+        if (!aiOnly) {
 			for (Player p : Bukkit.getOnlinePlayers()) {
 				res.add(p.getName());
 			}
@@ -93,8 +93,8 @@ public abstract class ChessAbstractCommand extends AbstractCommand {
 	}
 
 	protected List<ChessSet> getAllPieceStyles() {
-		Map<String,ChessSet> res = new HashMap<String, ChessSet>();
-		for (String styleName : getAllPieceStyleNames()) {
+        Map<String, ChessSet> res = new HashMap<>();
+        for (String styleName : getAllPieceStyleNames()) {
 			try {
 				res.put(styleName, ChessSetFactory.getChessSet(styleName));
 			} catch (ChessException e) {
@@ -105,8 +105,8 @@ public abstract class ChessAbstractCommand extends AbstractCommand {
 	}
 
 	protected List<BoardStyle> getAllBoardStyles() {
-		Map<String, BoardStyle> res = new HashMap<String, BoardStyle>();
-		for (String styleName : getAllBoardStyleNames()) {
+        Map<String, BoardStyle> res = new HashMap<>();
+        for (String styleName : getAllBoardStyleNames()) {
 			try {
 				res.put(styleName, BoardStyle.loadStyle(styleName));
 			} catch (ChessException e) {
@@ -125,8 +125,8 @@ public abstract class ChessAbstractCommand extends AbstractCommand {
 	}
 
 	private List<String> getAllStyleNames(File dir) {
-		Set<String> res = new HashSet<String>();
-		for (File f : new File(dir, "custom").listFiles(DirectoryStructure.ymlFilter)) {
+        Set<String> res = new HashSet<>();
+        for (File f : new File(dir, "custom").listFiles(DirectoryStructure.ymlFilter)) {
 			String styleName = f.getName().replaceAll("\\.yml$", "");
 			res.add(styleName);
 		}

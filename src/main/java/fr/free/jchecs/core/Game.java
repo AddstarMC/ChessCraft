@@ -47,13 +47,13 @@ public final class Game
   private final Player _blackPlayer = new Player(false);
 
   /** Liste des positions de l'échiquier. */
-  private final List<MoveGenerator> _positions = new ArrayList<MoveGenerator>();
+  private final List<MoveGenerator> _positions = new ArrayList<>();
 
   /** Liste des mouvements éxécutés. */
-  private final List<Move> _moves = new ArrayList<Move>();
+  private final List<Move> _moves = new ArrayList<>();
 
   /** Liste des notations SAN des mouvements. */
-  private final List<String> _sanMoves = new ArrayList<String>();
+  private final List<String> _sanMoves = new ArrayList<>();
 
   /** Description du joueur blanc. */
   private final Player _whitePlayer = new Player(true);
@@ -466,7 +466,7 @@ public final class Game
   }
 
   /** Enumération des états possibles d'une partie. */
-  public static enum State
+  public enum State
   {
     /** En cours. */
     IN_PROGRESS,
@@ -484,6 +484,6 @@ public final class Game
     DRAWN_BY_TRIPLE_REPETITION,
 
     /** Terminée par la règle des 50 coups. */
-    DRAWN_BY_50_MOVE_RULE;
+    DRAWN_BY_50_MOVE_RULE
   }
 }

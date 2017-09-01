@@ -18,7 +18,7 @@ import me.desht.dhutils.DHUtilsException;
 import me.desht.dhutils.Debugger;
 import me.desht.dhutils.MessagePager;
 import me.desht.dhutils.MiscUtil;
-import me.desht.dhutils.block.BlockType;
+import com.sk89q.worldedit.blocks.BlockType;
 import me.desht.dhutils.cuboid.Cuboid;
 import me.desht.dhutils.cuboid.Cuboid.CuboidDirection;
 import me.desht.dhutils.responsehandler.ResponseHandler;
@@ -45,14 +45,15 @@ public class ChessPlayerListener extends ChessListenerBase {
 	}
 
 	// block ids to be considered transparent when calling player.getTargetBlock()
-	private static final HashSet<Material> transparent = new HashSet<Material>();
-	static {
+    private static final HashSet<Material> transparent = new HashSet<>();
+
+    static {
 		transparent.add(Material.AIR); // air
 		transparent.add(Material.GLASS); // glass
 	}
 
 	private static final long MIN_ANIMATION_WAIT = 200; // milliseconds
-	private final Map<UUID,Long> lastAnimation = new HashMap<UUID, Long>();
+    private final Map<UUID, Long> lastAnimation = new HashMap<>();
 
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent event) {

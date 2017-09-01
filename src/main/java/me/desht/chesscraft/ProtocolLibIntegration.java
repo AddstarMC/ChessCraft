@@ -1,6 +1,6 @@
 package me.desht.chesscraft;
 
-import com.comphenix.protocol.Packets;
+import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.ConnectionSide;
 import com.comphenix.protocol.events.ListenerPriority;
@@ -9,16 +9,25 @@ import com.comphenix.protocol.events.PacketEvent;
 import me.desht.chesscraft.chess.BoardViewManager;
 import org.bukkit.Location;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ProtocolLibIntegration {
 	private static double entityVolume = 1.0;
 
 	public static void registerPacketHandler(ChessCraft plugin) {
-		ProtocolLibrary.getProtocolManager().addPacketListener(new PacketAdapter(plugin, ConnectionSide.SERVER_SIDE, ListenerPriority.NORMAL, Packets.Server.NAMED_SOUND_EFFECT) {
-			@Override
+        PacketAdapter.AdapterParameteters params = new PacketAdapter.AdapterParameteters();
+        params.connectionSide(ConnectionSide.SERVER_SIDE);
+        params.plugin(plugin);
+        params.listenerPriority(ListenerPriority.NORMAL);
+        Set<PacketType> types = new HashSet<>();
+        types.add(PacketType.Play.Server.NAMED_SOUND_EFFECT);
+        params.types(types);
+        ProtocolLibrary.getProtocolManager().addPacketListener(new PacketAdapter(params) {
+            @Override
 			public void onPacketSending(PacketEvent event) {
-				switch (event.getPacketID()) {
-				case Packets.Server.NAMED_SOUND_EFFECT: // 0x3E
-					if (entityVolume != 1.0) {
+                if (event.getPacketType().getCurrentId() == PacketType.Play.Server.NAMED_SOUND_EFFECT.getCurrentId()) {// 0x3E
+                    if (entityVolume != 1.0) {
 						// modify volume of all mob noises if they're on a chess board
 						String soundName = event.getPacket().getStrings().read(0);
 						int x = event.getPacket().getIntegers().read(0) >> 3;
@@ -36,7 +45,6 @@ public class ProtocolLibIntegration {
 							}
 						}
 					}
-					break;
 				}
 			}
 		});

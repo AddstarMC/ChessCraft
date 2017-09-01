@@ -64,7 +64,7 @@ final class NegaScoutEngine extends AbstractEngine
     final Integer resultat = TRANSPOSITIONS.get(pEtat, pProfondeur, pAlpha, pBeta);
     if (resultat != null)
     {
-      return resultat.intValue();
+        return resultat;
     }
 
     final boolean trait = pEtat.isWhiteActive();

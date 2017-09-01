@@ -3,7 +3,7 @@ package me.desht.chesscraft.chess.pieces;
 import chesspresso.Chess;
 import me.desht.chesscraft.enums.BoardRotation;
 import me.desht.dhutils.Debugger;
-import me.desht.dhutils.block.BlockType;
+import com.sk89q.worldedit.blocks.BlockType;
 import me.desht.dhutils.block.MassBlockUpdate;
 import me.desht.dhutils.block.MaterialWithData;
 import me.desht.dhutils.cuboid.Cuboid;
@@ -98,8 +98,8 @@ public class BlockChessStone extends ChessStone {
 		int xOff = (region.getSizeX() - getSizeX()) / 2;
 		int zOff = (region.getSizeZ() - getSizeZ()) / 2;
 
-		Map<Block,MaterialWithData> deferred = new HashMap<Block, MaterialWithData>();
-		World world = region.getWorld();
+        Map<Block, MaterialWithData> deferred = new HashMap<>();
+        World world = region.getWorld();
 		for (int x = 0; x < getSizeX(); x++) {
 			for (int y = 0; y < getSizeY(); y++) {
 				for (int z = 0; z < getSizeZ(); z++) {

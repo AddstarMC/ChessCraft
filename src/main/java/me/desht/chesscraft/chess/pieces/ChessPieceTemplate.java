@@ -63,11 +63,11 @@ public class ChessPieceTemplate {
 	 * @return
 	 */
 	public List<List<String>> getPieceData() {
-		List<List<String>> res = new ArrayList<List<String>>(sizeY);
+        List<List<String>> res = new ArrayList<>(sizeY);
 
 		for (int y = 0; y < sizeY; ++y) {
-			res.add(new ArrayList<String>(sizeX));
-			for (int x = 0; x < sizeX; ++x) {
+            res.add(new ArrayList<>(sizeX));
+            for (int x = 0; x < sizeX; ++x) {
 				StringBuilder sb = new StringBuilder();
 				for (int z = sizeZ - 1; z >= 0; z--) {
 					char c = pieceData[x][y][z];

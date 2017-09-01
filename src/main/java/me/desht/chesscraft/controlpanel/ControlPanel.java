@@ -38,8 +38,8 @@ public class ControlPanel {
         BoardRotation boardDir = view.getRotation();
 		signDir = boardDir.getRight();
 
-		buttonLocs = new HashMap<PersistableLocation, AbstractSignButton>();
-		buttonNames = new HashMap<String, AbstractSignButton>();
+        buttonLocs = new HashMap<>();
+        buttonNames = new HashMap<>();
 
 		panelBlocks = getPanelPosition();
 

@@ -20,10 +20,10 @@ import java.util.Map;
 public class ChessSetFactory {
 
 	// map of all known chess sets keyed by set name
-	private static final Map<String, ChessSet> allChessSets = new HashMap<String, ChessSet>();
+    private static final Map<String, ChessSet> allChessSets = new HashMap<>();
 
 	// note when the set was loaded so we can reload if the set file is updated
-	private static final Map<String,Long> setLoadTime = new HashMap<String, Long>();
+    private static final Map<String, Long> setLoadTime = new HashMap<>();
 
 	/**
 	 * Check if the given set is loaded.

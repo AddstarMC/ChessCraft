@@ -68,8 +68,8 @@ public class Messages {
 		// ensure that the config we're loading has all of the messages that the fallback has
 		// make a note of any missing translations
 		if (fallbackMessages != null && conf.getKeys(true).size() != fallbackMessages.getKeys(true).size()) {
-			Map<String,String> missingKeys = new HashMap<String, String>();
-			for (String key : fallbackMessages.getKeys(true)) {
+            Map<String, String> missingKeys = new HashMap<>();
+            for (String key : fallbackMessages.getKeys(true)) {
 				if (!conf.contains(key) && !fallbackMessages.isConfigurationSection(key)) {
 					conf.set(key, fallbackMessages.get(key));
 					missingKeys.put(key, fallbackMessages.get(key).toString());

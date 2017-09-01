@@ -45,7 +45,7 @@ public class ChessGame implements ConfigurationSerializable, ChessPersistable {
 	private final long created;
 
 	private final ChessPlayer[] players = new ChessPlayer[2];
-	private final List<Short> history = new ArrayList<Short>();
+    private final List<Short> history = new ArrayList<>();
 
 	private UUID invited;
 	private GameState state;
@@ -142,7 +142,7 @@ public class ChessGame implements ConfigurationSerializable, ChessPersistable {
 	}
 
 	public Map<String, Object> serialize() {
-		Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
 
 		map.put("name", name);
 		map.put("playerWhite", getPlayerId(Chess.WHITE));
@@ -1188,7 +1188,7 @@ public class ChessGame implements ConfigurationSerializable, ChessPersistable {
 	 * @return a string list of game information
 	 */
 	public List<String> getGameDetail() {
-		List<String> res = new ArrayList<String>();
+        List<String> res = new ArrayList<>();
 
 		String white = players[Chess.WHITE] == null ? "?" : players[Chess.WHITE].getDisplayName();
 		String black = players[Chess.BLACK] == null ? "?" : players[Chess.BLACK].getDisplayName();

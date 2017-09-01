@@ -171,7 +171,7 @@ abstract class AbstractEngine implements Engine
       final InputStream is = Engine.class.getResourceAsStream("jchecs.opn");
       if (is != null)
       {
-        S_openings = new HashMap<Integer, int []>();
+          S_openings = new HashMap<>();
         DataInputStream in = null;
         try
         {
@@ -187,7 +187,7 @@ abstract class AbstractEngine implements Engine
               mvtsId[i] = (in.readUnsignedShort() << 8) + in.readUnsignedByte();
               assert (mvtsId[i] & 0xFF000000) == 0;
             }
-            S_openings.put(Integer.valueOf(cle), mvtsId);
+              S_openings.put(cle, mvtsId);
           }
         }
         catch (final EOFException e)
@@ -219,7 +219,7 @@ abstract class AbstractEngine implements Engine
     int [] ids = null;
     if (S_openings != null)
     {
-      ids = S_openings.get(Integer.valueOf(pEtat.hashCode()));
+        ids = S_openings.get(pEtat.hashCode());
     }
     if (ids != null)
     {

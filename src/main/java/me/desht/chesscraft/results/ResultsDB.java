@@ -80,8 +80,8 @@ public class ResultsDB {
 			Connection oldConn = DriverManager.getConnection("jdbc:sqlite:" + oldDbFile.getAbsolutePath());
 			Statement st = oldConn.createStatement();
 			ResultSet rs = st.executeQuery("select * from " + Results.getResultsHandler().getTableName("results"));
-			List<ResultEntry> entries = new ArrayList<ResultEntry>();
-			while (rs.next()) {
+            List<ResultEntry> entries = new ArrayList<>();
+            while (rs.next()) {
 				ResultEntry e = new ResultEntry(rs);
 				entries.add(e);
 			}

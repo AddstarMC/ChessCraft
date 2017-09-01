@@ -105,7 +105,7 @@ final class TranspositionTable
           if ((type == EXACT) || ((type == ALPHA) && (val <= pAlpha))
               || ((type == BETA) && (val >= pBeta)))
           {
-            return Integer.valueOf(val);
+              return val;
           }
         }
         break;

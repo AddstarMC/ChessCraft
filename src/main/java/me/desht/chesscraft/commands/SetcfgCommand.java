@@ -30,8 +30,8 @@ public class SetcfgCommand extends ChessAbstractCommand {
 
 		try {
 			if (args.length > 2) {
-				List<String> list = new ArrayList<String>(args.length - 1);
-				list.addAll(Arrays.asList(args).subList(1, args.length));
+                List<String> list = new ArrayList<>(args.length - 1);
+                list.addAll(Arrays.asList(args).subList(1, args.length));
 				configManager.set(key, list);
 			} else {
 				configManager.set(key, val);

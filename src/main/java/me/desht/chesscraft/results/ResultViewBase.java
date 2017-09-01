@@ -24,8 +24,8 @@ public abstract class ResultViewBase {
 	ResultViewBase(Results handler, String viewType) {
 		this.viewType = viewType;
 		this.handler = handler;
-		this.scoreMap = new HashMap<String, Integer>();
-	}
+        this.scoreMap = new HashMap<>();
+    }
 
 	public abstract void addResult(ResultEntry re);
 
@@ -71,10 +71,10 @@ public abstract class ResultViewBase {
 		if (!handler.isDatabaseLoaded()) {
 			throw new ChessException("No results data is available yet");
 		}
-		List<ScoreRecord> res = new ArrayList<ScoreRecord>();
+        List<ScoreRecord> res = new ArrayList<>();
 
-		List<Entry<String, Integer>> list = new ArrayList<Entry<String,Integer>>();
-		for (Entry<String,Integer> entry : scoreMap.entrySet()) {
+        List<Entry<String, Integer>> list = new ArrayList<>();
+        for (Entry<String,Integer> entry : scoreMap.entrySet()) {
 			if (excludeAI && ChessAI.isAIPlayer(entry.getKey())) {
 				continue;
 			}

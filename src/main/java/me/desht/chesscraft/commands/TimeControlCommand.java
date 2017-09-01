@@ -1,11 +1,8 @@
 package me.desht.chesscraft.commands;
 
-import chesspresso.Chess;
 import me.desht.chesscraft.Messages;
 import me.desht.chesscraft.chess.ChessGame;
 import me.desht.chesscraft.chess.ChessGameManager;
-import me.desht.chesscraft.controlpanel.ControlPanel;
-import me.desht.chesscraft.controlpanel.TimeControlButton;
 import me.desht.chesscraft.exceptions.ChessException;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

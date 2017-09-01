@@ -26,8 +26,8 @@ public class ListAICommand extends ChessAbstractCommand {
 
 		if (args.length == 0) {
 			List<AIDefinition> aiDefs = AIFactory.getInstance().listAIDefinitions(true);
-			List<String> lines = new ArrayList<String>(aiDefs.size());
-			for (AIDefinition aiDef : aiDefs) {
+            List<String> lines = new ArrayList<>(aiDefs.size());
+            for (AIDefinition aiDef : aiDefs) {
 				if (!aiDef.isEnabled())
 					continue;
 				StringBuilder sb = new StringBuilder(Messages.getString("ChessCommandExecutor.AIList",

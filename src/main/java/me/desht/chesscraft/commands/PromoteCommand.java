@@ -4,8 +4,6 @@ import chesspresso.Chess;
 import me.desht.chesscraft.Messages;
 import me.desht.chesscraft.chess.ChessGame;
 import me.desht.chesscraft.chess.ChessGameManager;
-import me.desht.chesscraft.controlpanel.PromoteBlackButton;
-import me.desht.chesscraft.controlpanel.PromoteWhiteButton;
 import me.desht.chesscraft.exceptions.ChessException;
 import me.desht.chesscraft.util.ChessUtils;
 import me.desht.dhutils.MiscUtil;

@@ -1,11 +1,11 @@
-/**
+package me.desht.chesscraft.util;
+
+/*
  * Programmer: Jacob Scott
  * Program Name: ChessUtils
  * Description: misc. functions
  * Date: Jul 23, 2011
  */
-package me.desht.chesscraft.util;
-
 import chesspresso.Chess;
 import me.desht.chesscraft.ChessCraft;
 import me.desht.chesscraft.Messages;
@@ -109,7 +109,7 @@ public class ChessUtils {
 	 * @return the closest matching string
 	 */
 	public static String[] fuzzyMatch(String search, String set[], int minDist) {
-		ArrayList<String> matches = new ArrayList<String>();
+		ArrayList<String> matches = new ArrayList<>();
 		int dist = minDist;
 		if (search != null) {
 			for (String s : set) {
@@ -140,7 +140,7 @@ public class ChessUtils {
 
 	public static String getWandDescription() {
 		MaterialData mat = getWandMaterial();
-		return mat == null ? Messages.getString("ChessUtils.anything") : ItemNames.lookup(mat.toItemStack());
+		return mat == null ? Messages.getString("ChessUtils.anything") : ItemNames.lookup(mat.toItemStack(0));
 	}
 
 

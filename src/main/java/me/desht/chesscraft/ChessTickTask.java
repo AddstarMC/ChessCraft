@@ -2,14 +2,7 @@ package me.desht.chesscraft;
 
 import me.desht.chesscraft.chess.BoardView;
 import me.desht.chesscraft.chess.BoardViewManager;
-import me.desht.chesscraft.chess.ChessGame;
-import me.desht.chesscraft.chess.ChessGameManager;
-import me.desht.dhutils.Debugger;
-import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ChessTickTask extends BukkitRunnable {
 //	private int tickTaskId;
